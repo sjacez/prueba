@@ -1,0 +1,24 @@
+doctype 5
+html
+	head
+		title= title
+		link(rel='stylesheet', href='stylesheets/style.css')
+	body
+		section.vista
+			article.insertar
+				form(action="/" method="post")
+					label(for="nombre") Nombre:
+					input(type="text" name="nombre" class="nombre")
+					label(for="tel")	 Teléfono
+					input(type="text" name="tel" class="tel")
+					span(class="error #{mostrar}") *Formato:123456789
+					input(type="submit" name="enviar" class="enviar")
+			article.ensenar
+				h1 Contactos:
+				mixin mostrar(array)
+					li   Nombre: #{array[0]}
+					li.segundo   Teléfono:  #{array[1]}
+				each item in array
+					ul
+						+mostrar(item)
+			a(class="borrarc" href="borrar=si") Borrar contactos
